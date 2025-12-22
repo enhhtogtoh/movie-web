@@ -5,8 +5,12 @@ type Movie = {
 };
 export const Upcoming = () => {
   return (
-    <div>
-      <div></div>
+    <div className="w-full h-150 ">
+      <img
+        src="./Wicked.jpg"
+        alt="wicked"
+        className="w-full h-150 object-cover object-center"
+      />
     </div>
   );
 };

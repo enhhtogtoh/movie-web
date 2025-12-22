@@ -11,6 +11,8 @@ export default function Home() {
       <a href="/about">About ruu oc</a>
       <Header />
       <Upcoming />
+      <MovieCard />
+
       {/* <MovieCard /> */}
     </div>
   );
