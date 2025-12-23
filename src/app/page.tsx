@@ -3,17 +3,25 @@ import Image from "next/image";
 import { MovieCard } from "./components/MovieCard";
 import { Header } from "./components/Header";
 import { Upcoming } from "./components/Upcoming";
+import { Button } from "@/components/ui/button";
+import { Scroll } from "@/app/components/Scroll";
+import { Title } from "./components/Title";
 
 export default function Home() {
   return (
-    <div>
-      {/* <h1>Home page</h1> */}
-      <a href="/about">About ruu oc</a>
-      <Header />
-      <Upcoming />
-      <MovieCard />
+    <div className="flex justify-center">
+      <div className="flex flex-col justify-center items-center max-w-360">
+        {/* <h1>Home page</h1> */}
+        <a href="/about">About ruu oc</a>
+        <Header />
+        <Scroll />
+        <Title />
+        <Upcoming />
+        <MovieCard />
+        {/* <Button>Click me</Button> */}
 
-      {/* <MovieCard /> */}
+        {/* <MovieCard /> */}
+      </div>
     </div>
   );
 }
