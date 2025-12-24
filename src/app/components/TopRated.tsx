@@ -1,8 +1,8 @@
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
-const fetchfromUpcomingMovieDB = async () => {
+const fetchfromTopRatedMovieDB = async () => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     {
       method: "GET",
       headers: {
@@ -15,13 +15,13 @@ const fetchfromUpcomingMovieDB = async () => {
   console.log(data);
   return data.results;
 };
-export const Upcoming = async () => {
-  const upcomingMovies: Movie[] = await fetchfromUpcomingMovieDB();
+export const TopRated = async () => {
+  const topRatedMovies: Movie[] = await fetchfromTopRatedMovieDB();
   return (
     <div className="w-full flex flex-col gap-8 mt-8">
-      <div className="text-2xl font-semibold  flex gap-8">Upcoming</div>
+      <div className="text-2xl font-semibold  flex gap-8">Top Rated</div>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {upcomingMovies.slice(0, 10).map((movie) => (
+        {topRatedMovies.slice(0, 10).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
