@@ -1,3 +1,4 @@
+import { Fullscreen } from "lucide-react";
 import Image from "next/image";
 // import { Movie } from "@/app/data/movies";
 // type Props = {};
@@ -33,6 +34,29 @@ export const MovieCard = ({ movie }: Props) => {
         <p className="text-lg md:text-base sm:text-sm font-medium text-black ">
           {movie.title}
         </p>
+      </div>
+    </div>
+  );
+};
+type nowPlaying = {
+  id: number;
+  title: string;
+  backdrop_path: string;
+};
+type Props1 = {
+  now: nowPlaying;
+};
+export const Moviecard1 = ({ now }: Props1) => {
+  return (
+    <div className="w-full h-150 cursor-pointer ">
+      <div>
+        <Image
+          src={`https://image.tmdb.org/t/p/original${now.backdrop_path}`}
+          alt={now.title}
+          width={1000}
+          height={600}
+          className="w-full h-150 object-cover shrink-0"
+        />
       </div>
     </div>
   );

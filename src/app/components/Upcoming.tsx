@@ -22,7 +22,9 @@ export const Upcoming = async () => {
       <div className="text-2xl font-semibold  flex gap-8">Upcoming</div>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {upcomingMovies.slice(0, 10).map((movie) => (
-          <MovieCard movie={movie} key={movie.id} />
+          <div className="">
+            <MovieCard movie={movie} key={movie.id} />
+          </div>
         ))}
       </div>
     </div>
