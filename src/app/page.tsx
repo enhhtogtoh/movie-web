@@ -4,7 +4,6 @@ import { Popular } from "./components/Popular";
 import { TopRated } from "./components/TopRated";
 import { Hero } from "@/app/components/Hero";
 import { Footer } from "./components/Footer";
-import { CarouselHero } from "@/components/ui/Carousel1";
 
 export type Movie = {
   id: number;
@@ -18,7 +17,9 @@ export type nowPalying = {
   title: string;
   overview: string;
   backdrop_path: string;
-  poster_path: string;
+  original_title: string;
+
+  vote_average: number;
 };
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center max-w-360 w-full">
         <Header />
 
-        <CarouselHero />
+        <Hero />
         <Upcoming />
         <Popular />
         <TopRated />

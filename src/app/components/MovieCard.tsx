@@ -1,13 +1,15 @@
-import { Fullscreen } from "lucide-react";
 import Image from "next/image";
 // import { Movie } from "@/app/data/movies";
 // type Props = {};
 // import Image from "next/image";
+import { WatchTrailerButton } from "./TrailerButton";
 type Movie = {
   id: number;
   title: string;
   poster_path: string;
   vote_average: number;
+
+  // backdrop_path: string;
 };
 type Props = {
   movie: Movie;
@@ -42,21 +44,42 @@ type nowPlaying = {
   id: number;
   title: string;
   backdrop_path: string;
+  overview: string;
+  vote_average: number;
 };
 type Props1 = {
-  now: nowPlaying;
+  mov: nowPlaying;
 };
-export const Moviecard1 = ({ now }: Props1) => {
+
+export const Moviecard1 = ({ mov }: Props1) => {
+  console.log(mov);
+
   return (
     <div className="w-full h-150 cursor-pointer ">
-      <div>
+      <div className="grid">
         <Image
-          src={`https://image.tmdb.org/t/p/original${now.backdrop_path}`}
-          alt={now.title}
+          src={`https://image.tmdb.org/t/p/original${mov.backdrop_path}`}
+          alt={mov.title}
           width={1000}
           height={600}
-          className="w-full h-150 object-cover shrink-0"
+          className="w-full h-150 object-cover shrink-0 z-0"
         />
+        <div className="flex inset-0 absolute flex-col justify-center px-20 text-white max-w-xl gap-4">
+          <div>
+            <p className="text-base font-normal">Now Playing:</p>
+            <p className="text-4xl font-bold">{mov.title}</p>
+            <p className="text-lg font-semibold">
+              ⭐ {mov.vote_average?.toFixed(1)}
+              <span className="text-[#71717A] text-base font-normal">/10</span>
+            </p>
+          </div>
+          <p className="text-xs"> {mov.overview} </p>
+
+          <button className="py-2 px-4 w-37 h-10 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-md">
+            <img src="./play.png" alt="play" />
+            <p>Watch Trailer</p>
+          </button>
+        </div>
       </div>
     </div>
   );
