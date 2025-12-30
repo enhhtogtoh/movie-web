@@ -49,21 +49,3 @@ export const Hero = async () => {
     </Carousel>
   );
 };
-// export const Hero = async () => {
-//   const movie: Movie[] = await fetchfromNowPlayingMovieDB();
-//   return (
-//     <div>
-//       <div className="flex w-full">
-//         {movie.slice(0, 10).map((movie) => (
-//           <MovieCard movie={movie} key={movie.id} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-{
-  /* {nowPlayingMovie.map((mov) => (
-        <Moviecard1 mov={mov} key={mov.id} />
-      ))} */
-}

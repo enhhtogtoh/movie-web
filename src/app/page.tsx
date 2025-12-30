@@ -21,19 +21,23 @@ export type nowPalying = {
 
   vote_average: number;
 };
+export type Genre = {
+  id: number;
+  name: string;
+};
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center flex-col items-center">
       <div className="flex flex-col justify-center items-center max-w-360 w-full">
-        <Header />
+        {/* <Header /> */}
 
         <Hero />
         <Upcoming />
         <Popular />
         <TopRated />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

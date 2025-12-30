@@ -1,15 +1,10 @@
 import Image from "next/image";
-// import { Movie } from "@/app/data/movies";
-// type Props = {};
-// import Image from "next/image";
 import { WatchTrailerButton } from "./TrailerButton";
 type Movie = {
   id: number;
   title: string;
   poster_path: string;
   vote_average: number;
-
-  // backdrop_path: string;
 };
 type Props = {
   movie: Movie;
@@ -52,7 +47,7 @@ type Props1 = {
 };
 
 export const Moviecard1 = ({ mov }: Props1) => {
-  console.log(mov);
+  // console.log(mov);
 
   return (
     <div className="w-full h-150 cursor-pointer ">
