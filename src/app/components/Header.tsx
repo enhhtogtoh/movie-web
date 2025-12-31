@@ -16,6 +16,7 @@ export const Header = () => {
     fetcher
   );
   const results = data?.results ?? [];
+  console.log(results);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     replace(`/?query=${e.target.value}`);
