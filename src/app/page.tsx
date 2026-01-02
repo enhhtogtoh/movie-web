@@ -37,7 +37,7 @@ export default function Home() {
         <Popular />
         <TopRated />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

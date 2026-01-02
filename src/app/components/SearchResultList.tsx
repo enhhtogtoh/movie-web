@@ -11,13 +11,13 @@ type Movie = {
 };
 
 type Props = {
-  keyword: string;
+  word: string;
   results: Movie[];
   onClose: () => void;
 };
 
-export const SearchResultList = ({ keyword, results, onClose }: Props) => {
-  if (!keyword) return null;
+export const SearchResultList = ({ word, results, onClose }: Props) => {
+  if (!word) return null;
 
   return (
     <div className="absolute left-1/2 top-11 z-40 mt-2 w-144.25 h-auto -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7]">
@@ -66,7 +66,7 @@ export const SearchResultList = ({ keyword, results, onClose }: Props) => {
         onClick={onClose}
         className="w-full border-t px-4 py-2 text-center text-xs text-gray-600 hover:bg-gray-50 cursor-pointer h-10 flex items-center"
       >
-        See all results for “{keyword}”
+        See all results for “{word}”
       </button>
     </div>
   );
