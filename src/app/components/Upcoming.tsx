@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
+import * as motion from "motion/react-client";
 export const fetchfromUpcomingMovieDB = async (category: string) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
@@ -22,18 +23,24 @@ export const Upcoming = async () => {
       <div className="text-2xl font-semibold  flex gap-8 justify-between">
         <h1>Upcoming</h1>
         <Link href="/category/upcoming">
-          <button className="flex text-sm  justify-center items-center gap-2 cursor-pointer">
+          <motion.button
+            initial={{ opacity: 0 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8, color: "#432dd7" }}
+            whileInView={{ opacity: 1 }}
+            className="flex text-sm  justify-center items-center gap-2 cursor-pointer"
+          >
             See more
             <img
               src="./arrow-right.png"
               alt="arrow-right"
               className="w-4 h-4"
             />
-          </button>
+          </motion.button>
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
         {upcomingMovie.slice(0, 10).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}

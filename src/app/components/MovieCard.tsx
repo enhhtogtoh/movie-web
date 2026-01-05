@@ -11,7 +11,10 @@ type Props = {
 };
 export const MovieCard = ({ movie }: Props) => {
   return (
-    <div className="cursor-pointer bg-[#F4F4F5] h-97.5 rounded-md flex flex-col ">
+    <div
+      className="cursor-pointer bg-[#F4F4F5] h-97.5 rounded-md flex flex-col transition-transform duration-200 
+             hover:scale-105 hover:drop-shadow-md"
+    >
       {/* MOVIE POSTER */}
       <div className="h-75 w-full ">
         <Image
@@ -19,7 +22,7 @@ export const MovieCard = ({ movie }: Props) => {
           alt={movie.title}
           width={200}
           height={300}
-          className="h-75 w-full rounded-lg object-cover"
+          className="h-75 w-full rounded-lg object-cover "
         />
       </div>
       <div className="flex flex-col pl-2">

@@ -5,10 +5,8 @@ import useSWR from "swr";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { SearchResultList } from "./SearchResultList";
-import { GenreButton } from "./GenreButtonList";
-import { Genre } from "../page";
 import Link from "next/link";
-
+import * as motion from "motion/react-client";
 export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   // const { replace } = useRouter();
@@ -34,18 +32,27 @@ export const Header = () => {
         id="center navigation"
         className="w-full h-9 flex justify-between items-center "
       >
-        <div id="logo" className="flex h-5 gap-2 justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.8 }}
+          whileInView={{ opacity: 1 }}
+          id="logo"
+          className="flex h-5 gap-2 justify-center items-center"
+        >
           <img src="./Vector-1.png" alt="vector" className="w-[17] h-[17]" />
           <Link href="/">
             <p className="text-indigo-700 font-semibold italic">Movie Z</p>
           </Link>
-        </div>
+        </motion.div>
         <div id="search-frame" className="w-122 h-9 flex gap-3  ">
-          {/* <button className="flex items-center justify-center border rounded-md  px-4 py-2 gap-2 w-[97] h- border-[#E4E4E7] text-[#18181B] font-medium text-sm cursor-pointer">
+          <button className="flex items-center justify-center border rounded-md  px-4 py-2 gap-2 w-[97] h- border-[#E4E4E7] text-[#18181B] font-medium text-sm cursor-pointer">
             <img src="./chevron-down.png" alt="chevron" className="w-4 h-4" />
             Genre
-          </button> */}
-          {/* <GenreButton genres={genres} onSelect={genres} /> */}
+          </button>
+          {/* <GetGenres /> */}
+          {/* <GenreButton genres={onclick} onSelect={onselect} /> */}
+
           <div className="flex w-[379] h- border px-3 gap-[10] items-center rounded-md border-[#e4e4e7] ">
             <img
               src="_magnifying-glass.png"

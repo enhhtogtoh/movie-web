@@ -1,6 +1,7 @@
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
+import * as motion from "motion/react-client";
 export const fetchfromTopRatedMovieDB = async (category: string) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
@@ -22,14 +23,20 @@ export const TopRated = async () => {
       <div className="text-2xl font-semibold  flex gap-8 justify-between">
         <h1>Top Rated</h1>
         <Link href="/category/top_rated">
-          <button className="flex text-sm  justify-center items-center gap-2 cursor-pointer">
+          <motion.button
+            initial={{ opacity: 0 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8, color: "#432dd7" }}
+            whileInView={{ opacity: 1 }}
+            className="flex text-sm  justify-center items-center gap-2 cursor-pointer"
+          >
             See more
             <img
               src="./arrow-right.png"
               alt="arrow-right"
               className="w-4 h-4"
             />
-          </button>
+          </motion.button>
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

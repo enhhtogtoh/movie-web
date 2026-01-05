@@ -55,7 +55,7 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
               </div>
             </div>
 
-            <button className="text-sm font-medium text-[#09090B] flex items-end">
+            <button className="text-xs font-medium text-[#09090B] flex items-end">
               See more →
             </button>
           </li>

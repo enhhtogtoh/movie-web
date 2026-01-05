@@ -13,7 +13,7 @@ export const Footer = () => {
             </div>
             <div id="date">
               <p className="text-white text-sm font-normal">
-                © 2024 Movie Z. All Rights Reserved.
+                © 2026 Movie Z. All Rights Reserved.
               </p>
             </div>
           </div>
