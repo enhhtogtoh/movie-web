@@ -19,12 +19,8 @@ export type nowPalying = {
 
   vote_average: number;
 };
-export type Genre = {
-  id: number;
-  name: string;
-};
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex justify-center flex-col items-center">
       <div className="flex flex-col justify-center items-center max-w-360 w-full">

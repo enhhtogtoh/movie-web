@@ -1,3 +1,6 @@
+import { TbMovie } from "react-icons/tb";
+import { PiPhoneThin } from "react-icons/pi";
+import { CiMail } from "react-icons/ci";
 export const Footer = () => {
   return (
     <div
@@ -7,8 +10,10 @@ export const Footer = () => {
       <div id="footer-container" className="w-full h-50 max-w-7xl flex gap-30 ">
         <div id="info-section" className="w-61.75 h-50 flex gap-10">
           <div id="logo-and-right" className="w-full h-13 flex flex-col gap-3">
-            <div id="logo" className="flex ">
-              <img src="./vector-2.png" alt="vector" className="w-5 h-5" />
+            <div id="logo" className="flex items-center ">
+              <TbMovie
+                style={{ color: "white", width: "25px", height: "25px" }}
+              />
               <p className="text-white font-semibold italic">Movie Z</p>
             </div>
             <div id="date">
@@ -29,22 +34,14 @@ export const Footer = () => {
             <p>Contact Information</p>
             <div id="contact-details" className="flex flex-col gap-6">
               <div id="email-container" className="flex items-center gap-3 ">
-                <img
-                  src="./email-icon.png"
-                  alt="email-icon"
-                  className="w-4 h-4"
-                />
+                <CiMail style={{ width: "16px", height: "16px" }} />
                 <div id="email-text">
                   <p>Email:</p>
                   <p>enhhtogtoh@gmail.com</p>
                 </div>
               </div>
               <div id="phone-container" className="flex items-center gap-3 ">
-                <img
-                  src="./phone-icon.png"
-                  alt="phone-icon"
-                  className="w-4 h-4"
-                />
+                <PiPhoneThin style={{ width: "16px", height: "16px" }} />
                 <div id="phone-text">
                   <p>Phone:</p>
                   <p>+976 8007-6360</p>

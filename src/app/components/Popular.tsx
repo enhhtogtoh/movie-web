@@ -2,6 +2,7 @@ import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import * as motion from "motion/react-client";
+import { ArrowRightIcon } from "lucide-react";
 export const fetchfromPopularMovieDB = async (category: string) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${category}`,
@@ -31,11 +32,7 @@ export const Popular = async () => {
             className="flex text-sm  justify-center items-center gap-2 cursor-pointer"
           >
             See more
-            <img
-              src="./arrow-right.png"
-              alt="arrow-right"
-              className="w-4 h-4"
-            />
+            <ArrowRightIcon style={{ width: "16px", height: "16px" }} />
           </motion.button>
         </Link>
       </div>

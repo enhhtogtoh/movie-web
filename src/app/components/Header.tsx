@@ -2,12 +2,21 @@
 import { fetcher } from "@/utils/fetcher";
 import { useState, ChangeEvent } from "react";
 import useSWR from "swr";
-import { Loader } from "lucide-react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { SearchResultList } from "./SearchResultList";
 import Link from "next/link";
 import * as motion from "motion/react-client";
-export const Header = () => {
+import { SearchIcon, Loader } from "lucide-react";
+import { GenresDropdown } from "@/app/components/GenreButton";
+import { Genre } from "@/lib/getGenres";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { TbMovie } from "react-icons/tb";
+
+type Props = {
+  genres: Genre[];
+};
+
+export const Header = ({ genres }: Props) => {
   const [searchValue, setSearchValue] = useState("");
   // const { replace } = useRouter();
   const { data, isLoading, error } = useSWR(
@@ -20,9 +29,6 @@ export const Header = () => {
     setSearchValue(e.target.value);
     // replace(`/?query=${e.target.value}`);
   };
-
-  // console.log(data);
-
   return (
     <div
       id="navigation"
@@ -40,25 +46,17 @@ export const Header = () => {
           id="logo"
           className="flex h-5 gap-2 justify-center items-center"
         >
-          <img src="./Vector-1.png" alt="vector" className="w-[17] h-[17]" />
+          <TbMovie
+            style={{ color: "#432dd7", width: "20px", height: "20px" }}
+          />
           <Link href="/">
             <p className="text-indigo-700 font-semibold italic">Movie Z</p>
           </Link>
         </motion.div>
         <div id="search-frame" className="w-122 h-9 flex gap-3  ">
-          <button className="flex items-center justify-center border rounded-md  px-4 py-2 gap-2 w-[97] h- border-[#E4E4E7] text-[#18181B] font-medium text-sm cursor-pointer">
-            <img src="./chevron-down.png" alt="chevron" className="w-4 h-4" />
-            Genre
-          </button>
-          {/* <GetGenres /> */}
-          {/* <GenreButton genres={onclick} onSelect={onselect} /> */}
-
+          <GenresDropdown genres={genres} />
           <div className="flex w-[379] h- border px-3 gap-[10] items-center rounded-md border-[#e4e4e7] ">
-            <img
-              src="_magnifying-glass.png"
-              alt="_magnifying-glass"
-              className="w-4 h-4 "
-            />
+            <SearchIcon style={{ width: "16px", height: "16px" }} />
             <input
               type="search"
               placeholder="Search.."
@@ -77,7 +75,7 @@ export const Header = () => {
           id="modes"
           className="w-9 h-9 flex gap-3  border rounded-md py-2 justify-center border-[#e4e4e7]"
         >
-          <img src="moon.png" alt="moon" className="w-4 h-4 " />
+          <MdOutlineDarkMode className="cursor-pointer" />
         </div>
       </div>
     </div>

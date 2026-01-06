@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { WatchTrailerButton } from "./TrailerButton";
 type Movie = {
   id: number;
   title: string;
@@ -15,7 +14,6 @@ export const MovieCard = ({ movie }: Props) => {
       className="cursor-pointer bg-[#F4F4F5] h-97.5 rounded-md flex flex-col transition-transform duration-200 
              hover:scale-105 hover:drop-shadow-md"
     >
-      {/* MOVIE POSTER */}
       <div className="h-75 w-full ">
         <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -26,11 +24,10 @@ export const MovieCard = ({ movie }: Props) => {
         />
       </div>
       <div className="flex flex-col pl-2">
-        {/* RATING */}
         <p className="mt-2 text-sm text-yellow-500">
           ⭐ {movie.vote_average?.toFixed(1)}
         </p>
-        {/* TITLE */}
+
         <p className="text-lg md:text-base sm:text-sm font-medium text-black ">
           {movie.title}
         </p>
@@ -50,10 +47,8 @@ type Props1 = {
 };
 
 export const Moviecard1 = ({ mov }: Props1) => {
-  // console.log(mov);
-
   return (
-    <div className="w-full h-150 cursor-pointer ">
+    <div className="w-full h-150  ">
       <div className="grid">
         <Image
           src={`https://image.tmdb.org/t/p/original${mov.backdrop_path}`}

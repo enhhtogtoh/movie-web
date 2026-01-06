@@ -1,4 +1,8 @@
-export const GetGenres = async () => {
+export type Genre = {
+  id: number;
+  name: string;
+};
+export const getGenres = async () => {
   const res = await fetch(
     "https://api.themoviedb.org/3/genre/movie/list?language=en",
     {

@@ -21,7 +21,7 @@ export const Title = () => {
           stiffness: 400,
           damping: 17,
         }}
-        className="flex w-30 h-9 rounded-md py-2 px-4 gap-2 justify-center items-center bg-amber-200"
+        className="flex w-30 h-9 rounded-md py-2 px-4 gap-2 justify-center items-center "
       >
         <button className="text-sm ">See more</button>
         <img src="./arrow-right.png" alt="arrow-right" className="w-4 h-4" />
