@@ -37,7 +37,7 @@ export const Upcoming = async () => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {upcomingMovie.slice(0, 10).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}

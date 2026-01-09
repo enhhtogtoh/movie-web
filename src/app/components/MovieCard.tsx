@@ -23,12 +23,13 @@ export const MovieCard = ({ movie }: Props) => {
             alt={movie.title}
             width={200}
             height={300}
-            className="h-75 w-full rounded-lg object-cover "
+            className="h-75 w-full rounded-lg object-cover hover:opacity-40"
           />
         </div>
         <div className="flex flex-col pl-2">
           <p className="mt-2 text-sm text-yellow-500">
             ⭐ {movie.vote_average?.toFixed(1)}
+            <span className="text-[#71717A] text-xs">/10</span>
           </p>
 
           <p className="text-lg md:text-base sm:text-sm font-medium text-black ">

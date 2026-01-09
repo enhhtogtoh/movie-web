@@ -1,6 +1,7 @@
 import { TbStarFilled } from "react-icons/tb";
 import Team from "@/app/components/Directors";
 import { m } from "motion/react";
+import { SimilarMovie } from "@/app/components/SimilarMovie";
 type Params = {
   params: Promise<{
     movieId: string;
@@ -36,7 +37,7 @@ export default async function MovieDetails({ params }: Params) {
   const data: Movie = await res.json();
 
   return (
-    <div className="px-10 py-6 space-y-6 flex flex-col justify-center  ">
+    <div className="px-10 py-6 space-y-6 flex flex-col justify-center ">
       <div className="flex justify-between w-full">
         <div className="">
           <h1 className="text-3xl font-semibold">{data.title}</h1>
@@ -94,6 +95,7 @@ export default async function MovieDetails({ params }: Params) {
 
       <p className="text-gray-700 mt-3 ">{data.overview}</p>
       <Team id={movieId} />
+      <SimilarMovie id={movieId} />
     </div>
   );
 }
