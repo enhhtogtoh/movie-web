@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Genre } from "@/lib/getGenres";
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
+import * as motion from "motion/react-client";
 
 type Props = {
   genres: Genre[];
@@ -34,7 +35,13 @@ export const GenresDropdown = ({ genres }: Props) => {
       </button>
 
       {open && (
-        <div className="absolute left-72 top-8 z-40 mt-3 w-144.25 -translate-x-1/2 rounded-lg border border-[#E4E4E7] bg-white p-6 drop-shadow-md">
+        <motion.div
+          initial={{ opacity: -10 }}
+          whileHover={{ scale: 1 }}
+          whileTap={{ scale: 0.8 }}
+          whileInView={{ opacity: 10 }}
+          className="absolute left-72 top-8 z-40 mt-3 w-144.25 -translate-x-1/2 rounded-lg border border-[#E4E4E7] bg-white p-6 drop-shadow-md  "
+        >
           <div className="mb-4 flex items-start justify-between gap-1">
             <div>
               <h2 className="text-2xl font-semibold">Genres</h2>
@@ -57,7 +64,7 @@ export const GenresDropdown = ({ genres }: Props) => {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

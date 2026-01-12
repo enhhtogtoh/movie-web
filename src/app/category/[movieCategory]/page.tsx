@@ -1,6 +1,7 @@
 import { fetchfromPopularMovieDB } from "@/app/components/Popular";
 import { Movie } from "@/app/page";
 import { MovieCard } from "@/app/components/MovieCard";
+// import { SimilarPage } from "@/app/movie/[movieId]/similar/page";
 export default async function Page({
   params,
 }: {

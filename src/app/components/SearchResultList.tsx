@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Movie = {
   id: number;
@@ -18,14 +19,18 @@ type Props = {
 
 export const SearchResultList = ({ word, results, onClose }: Props) => {
   if (!word) return null;
-
+  const router = useRouter();
   return (
     <div className="absolute left-1/2 top-11 z-40 mt-2 w-144.25 h-auto -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7]">
       <div className="h-auto overflow-y-auto">
         {results.slice(0, 5).map((movie) => (
           <li
             key={movie.id}
-            className="flex  justify-between gap-3 px-4 py-3 hover:bg-gray-50 border-b border-[#E4E4E7] cursor-pointer"
+            onClick={() => {
+              router.push(`/movie/${movie.id}`);
+              onClose();
+            }}
+            className="flex justify-between gap-3 px-4 py-3 hover:bg-gray-50 border-b border-[#E4E4E7] cursor-pointer"
           >
             <div className="flex items-center gap-3 ">
               {movie.poster_path && (
@@ -63,10 +68,13 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
       </div>
 
       <button
-        onClick={onClose}
-        className="w-full border-t px-4 py-2 text-center text-xs text-gray-600 hover:bg-gray-50 cursor-pointer h-10 flex items-center"
+        onClick={() => {
+          router.push(`/search?query=${word}`);
+          onClose();
+        }}
+        className="text-xs font-medium text-gray-600 hover:bg-gray-50 cursor-pointer h-10 flex items-center"
       >
-        See all results for “{word}”
+        See all results for "{word}"
       </button>
     </div>
   );
