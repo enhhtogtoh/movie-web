@@ -22,7 +22,7 @@ export const SimilarMovie = async ({ id }: { id: string }) => {
   return (
     <div className="flex flex-col gap-8 px-20">
       <h2 className="font-semibold text-3xl">More like this</h2>
-
+      {/* <Link href={"SimilarPage/similar"}>see more</Link> */}
       <div className="grid grid-cols-5  w-auto mb-8 gap-8 ">
         {movies.slice(0, 5).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
