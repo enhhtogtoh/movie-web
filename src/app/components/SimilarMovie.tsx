@@ -21,8 +21,21 @@ export const SimilarMovie = async ({ id }: { id: string }) => {
   const movies: Movie[] = await fetchfromSimilarMovieDB(id);
   return (
     <div className="flex flex-col gap-8 px-20">
-      <h2 className="font-semibold text-3xl">More like this</h2>
-      <Link href={`/similar/${id}`}>see more</Link>
+      <div className="flex justify-between">
+        <h2 className="font-semibold text-3xl">More like this</h2>
+        <Link
+          href={`/similar/${id}`}
+          style={{ display: "flex", alignItems: "center", gap: "8px" }}
+        >
+          see more
+          <ArrowRightIcon
+            style={{
+              width: "16px",
+              height: "16px",
+            }}
+          />{" "}
+        </Link>
+      </div>
 
       <div className="grid grid-cols-5  w-auto mb-8 gap-8 ">
         {movies.slice(0, 5).map((movie) => (

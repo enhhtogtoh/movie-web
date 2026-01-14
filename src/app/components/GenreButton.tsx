@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Genre } from "@/lib/getGenres";
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import * as motion from "motion/react-client";
+import Link from "next/link";
 
 type Props = {
   genres: Genre[];
@@ -22,6 +23,7 @@ export const GenresDropdown = ({ genres }: Props) => {
   const handleClick = () => {
     setActive(false);
   };
+  console.log(genres);
 
   return (
     <div className="relative flex ">
@@ -54,14 +56,16 @@ export const GenresDropdown = ({ genres }: Props) => {
 
           <div className="flex flex-wrap gap-3">
             {genres.map((genre) => (
-              <button
-                key={genre.id}
-                onClick={() => handleSelect(genre)}
-                className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs hover:bg-[#432dd7] hover:text-white hover:border-neutral-50 cursor-pointer"
-              >
-                <span>{genre.name}</span>
-                <ChevronRightIcon style={{ width: "14px", height: "14px" }} />
-              </button>
+              <Link href={`/genres/${genre.id}`}>
+                <button
+                  key={genre.id}
+                  onClick={() => handleSelect(genre)}
+                  className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs hover:bg-[#432dd7] hover:text-white hover:border-neutral-50 cursor-pointer"
+                >
+                  <span>{genre.name}</span>
+                  <ChevronRightIcon style={{ width: "14px", height: "14px" }} />
+                </button>
+              </Link>
             ))}
           </div>
         </motion.div>

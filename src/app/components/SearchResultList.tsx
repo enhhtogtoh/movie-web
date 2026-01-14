@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Movie = {
@@ -67,15 +68,17 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
         ))}
       </div>
 
-      <button
-        onClick={() => {
-          router.push(`/search?query=${word}`);
-          onClose();
-        }}
-        className="text-xs font-medium text-gray-600 hover:bg-gray-50 cursor-pointer h-10 flex items-center"
-      >
-        See all results for "{word}"
-      </button>
+      <Link href={`/search/${word}`}>
+        <button
+          onClick={() => {
+            router.push(`/search?query=${word}`);
+            onClose();
+          }}
+          className="text-xs font-medium text-gray-600 hover:bg-gray-50 cursor-pointer h-10 flex items-center"
+        >
+          See all results for "{word}"
+        </button>
+      </Link>
     </div>
   );
 };
