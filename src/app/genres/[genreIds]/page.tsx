@@ -23,7 +23,7 @@ export default async function GenresPage({
   );
 
   const data = await res.json();
-  //   console.log(data);
+  console.log(data);
   const movies = data?.results || [];
 
   return (
