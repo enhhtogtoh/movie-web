@@ -1,6 +1,6 @@
 import { TbStarFilled } from "react-icons/tb";
 import Team from "@/app/components/Directors";
-import { m } from "motion/react";
+import Link from "next/link";
 import { SimilarMovie } from "@/app/components/SimilarMovie";
 type Params = {
   params: Promise<{
@@ -84,12 +84,14 @@ export default async function MovieDetails({ params }: Params) {
 
       <div className="flex gap-2 flex-wrap mt-3">
         {data.genres?.map((g) => (
-          <span
-            key={g.id}
-            className="px-3 py-1 rounded-full bg-gray-200 text-sm text-black cursor-pointer hover:bg-[#432dd7] hover:text-white active:scale-95 transition duration-200"
-          >
-            {g.name}
-          </span>
+          <Link key={g.id} href={`/genres/${g.id}`}>
+            <span
+              key={g.id}
+              className="px-3 py-1 rounded-full bg-gray-200 text-sm text-black cursor-pointer hover:bg-[#432dd7] hover:text-white active:scale-95 transition duration-200"
+            >
+              {g.name}
+            </span>
+          </Link>
         ))}
       </div>
 

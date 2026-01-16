@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Genre } from "@/lib/getGenres";
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
-import * as motion from "motion/react-client";
+import { AnimatePresence, motion } from "framer-motion";
+
 import Link from "next/link";
 
 type Props = {
@@ -37,38 +38,45 @@ export const GenresDropdown = ({ genres }: Props) => {
       </button>
 
       {open && (
-        <motion.div
-          initial={{ opacity: -10 }}
-          whileHover={{ scale: 1 }}
-          whileTap={{ scale: 0.8 }}
-          whileInView={{ opacity: 10 }}
-          className="absolute left-72 top-8 z-40 mt-3 w-144.25 -translate-x-1/2 rounded-lg border border-[#E4E4E7] bg-white p-6 drop-shadow-md  "
-        >
-          <div className="mb-4 flex items-start justify-between gap-1">
-            <div>
-              <h2 className="text-2xl font-semibold">Genres</h2>
-              <p className="text-base text-[#09090B] font-normal ">
-                See lists of movies by genre
-              </p>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.96 }}
+            transition={{
+              duration: 0.25,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+            className="absolute left-72 top-8 z-40 mt-3 w-144.25 -translate-x-1/2 rounded-lg border border-[#E4E4E7] bg-white p-6 drop-shadow-md  "
+          >
+            <div className="mb-4 flex items-start justify-between gap-1">
+              <div>
+                <h2 className="text-2xl font-semibold">Genres</h2>
+                <p className="text-base text-[#09090B] font-normal ">
+                  See lists of movies by genre
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="border-t py-4 border-[#E4E4E7]"></div>
+            <div className="border-t py-4 border-[#E4E4E7]"></div>
 
-          <div className="flex flex-wrap gap-3">
-            {genres.map((genre) => (
-              <Link href={`/genres/${genre.id}`}>
-                <button
-                  key={genre.id}
-                  onClick={() => handleSelect(genre)}
-                  className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs hover:bg-[#432dd7] hover:text-white hover:border-neutral-50 cursor-pointer"
-                >
-                  <span>{genre.name}</span>
-                  <ChevronRightIcon style={{ width: "14px", height: "14px" }} />
-                </button>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
+            <div className="flex flex-wrap gap-3">
+              {genres.map((genre) => (
+                <Link href={`/genres/${genre.id}`}>
+                  <button
+                    key={genre.id}
+                    onClick={() => handleSelect(genre)}
+                    className="flex items-center gap-1 rounded-full border border-gray-300 bg-gray-50 px-3 py-1 text-xs hover:bg-[#432dd7] hover:text-white hover:border-neutral-50 cursor-pointer"
+                  >
+                    <span>{genre.name}</span>
+                    <ChevronRightIcon
+                      style={{ width: "14px", height: "14px" }}
+                    />
+                  </button>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       )}
     </div>
   );
