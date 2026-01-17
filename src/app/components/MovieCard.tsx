@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import WatchTrailerButton from "./TrailerButton";
+import { movies } from "../data/movies";
 type Movie = {
   id: number;
   title: string;
@@ -72,11 +74,7 @@ export const Moviecard1 = ({ mov }: Props1) => {
             </p>
           </div>
           <p className="text-xs"> {mov.overview} </p>
-
-          <button className="py-2 px-4 w-37 h-10 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-md">
-            <img src="./play.png" alt="play" />
-            <p>Watch Trailer</p>
-          </button>
+          <WatchTrailerButton movieId={mov.id} key={mov.id} />
         </div>
       </div>
     </div>

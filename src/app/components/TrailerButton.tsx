@@ -2,46 +2,48 @@
 
 import { useState } from "react";
 import { TrailerModal } from "./TrailModal";
+import { BsCaretRight } from "react-icons/bs";
 
 type Props = {
   movieId: number;
 };
 
-export const WatchTrailerButton = ({ movieId }: Props) => {
+export default function WatchTrailerButton({ movieId }: Props) {
   const [youtubeKey, setYoutubeKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
+    setYoutubeKey(null);
     setLoading(true);
 
     const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
+        },
+      },
     );
 
     const data = await res.json();
 
     const trailer =
       data.results?.find(
-        (v: any) => v.site === "YouTube" && v.type === "Trailer"
+        (v: any) => v.site === "YouTube" && v.type === "Trailer",
       ) || data.results?.find((v: any) => v.site === "YouTube");
-
-    if (!trailer) {
-      alert("Trailer олдсонгүй 😅");
-      setLoading(false);
-      return;
-    }
 
     setYoutubeKey(trailer.key);
     setLoading(false);
   };
 
   return (
-    <>
+    <div>
       <button
         onClick={handleClick}
         disabled={loading}
-        className="mt-4 rounded-md bg-white px-6 py-2 text-sm font-medium text-black"
+        className="py-2 px-4 w-40 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-md cursor-pointer"
       >
+        <BsCaretRight />
         {loading ? "Loading..." : "Watch Trailer"}
       </button>
 
@@ -49,8 +51,9 @@ export const WatchTrailerButton = ({ movieId }: Props) => {
         <TrailerModal
           youtubeKey={youtubeKey}
           onClose={() => setYoutubeKey(null)}
+          movieId={movieId}
         />
       )}
-    </>
+    </div>
   );
-};
+}

@@ -1,3 +1,4 @@
+// "use client";
 import { nowPalying } from "../page";
 import { Moviecard1 } from "./MovieCard";
 import Autoplay from "embla-carousel-autoplay";
@@ -40,7 +41,7 @@ export const Hero = async () => {
       <CarouselContent>
         {nowPlayingMovie.map((mov) => (
           <CarouselItem key={mov.id} className="relative">
-            <Moviecard1 mov={mov} />
+            <Moviecard1 mov={mov} key={mov.id} />
           </CarouselItem>
         ))}
       </CarouselContent>
