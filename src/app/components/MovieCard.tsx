@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import WatchTrailerButton from "./TrailerButton";
-import { movies } from "../data/movies";
+// import { movies } from "../data/movies";
 type Movie = {
   id: number;
   title: string;
@@ -64,7 +64,7 @@ export const Moviecard1 = ({ mov }: Props1) => {
           height={600}
           className="w-full h-150 object-cover shrink-0 z-0"
         />
-        <div className="flex inset-0 absolute flex-col justify-center px-20 text-white max-w-xl gap-4">
+        <div className="flex inset-0 absolute flex-col justify-center px-20 text-white max-w-xl gap-4 z-10">
           <div>
             <p className="text-base font-normal">Now Playing:</p>
             <p className="text-4xl font-bold">{mov.title}</p>

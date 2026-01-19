@@ -21,7 +21,7 @@ export const Header = ({ genres }: Props) => {
   // const { replace } = useRouter();
   const { data, isLoading, error } = useSWR(
     `https://api.themoviedb.org/3/search/movie?query=${searchValue}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=1`,
-    fetcher
+    fetcher,
   );
   const results = data?.results ?? [];
   // console.log(results);

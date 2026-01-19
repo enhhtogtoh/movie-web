@@ -19,7 +19,7 @@ const fetchfromNowPlayingMovieDB = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
 
