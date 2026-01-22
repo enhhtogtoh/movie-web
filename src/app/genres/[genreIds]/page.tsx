@@ -19,7 +19,7 @@ export default async function GenresPage({
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
       cache: "no-store",
-    }
+    },
   );
 
   const data = await res.json();
@@ -29,7 +29,7 @@ export default async function GenresPage({
 
   // genre ID → name
   const currentGenre = genres.find(
-    (g: any) => String(g.id) === String(genreIds)
+    (g: any) => String(g.id) === String(genreIds),
   );
 
   const genreName = currentGenre?.name || "Unknown";
