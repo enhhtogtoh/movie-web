@@ -42,6 +42,7 @@ export const Hero = async () => {
         {nowPlayingMovie.map((mov) => (
           <CarouselItem key={mov.id} className="relative">
             <Moviecard1 mov={mov} key={mov.id} />
+            
           </CarouselItem>
         ))}
       </CarouselContent>

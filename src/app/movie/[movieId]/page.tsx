@@ -2,6 +2,9 @@ import { TbStarFilled } from "react-icons/tb";
 import Team from "@/app/components/Directors";
 import Link from "next/link";
 import { SimilarMovie } from "@/app/components/SimilarMovie";
+
+import { WatchTrailerButtonDetail } from "@/app/components/TrailerButtonDetail";
+
 type Params = {
   params: Promise<{
     movieId: string;
@@ -31,7 +34,7 @@ export default async function MovieDetails({ params }: Params) {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
-    }
+    },
   );
 
   const data: Movie = await res.json();
@@ -68,18 +71,24 @@ export default async function MovieDetails({ params }: Params) {
         </div>
       </div>
 
-      <div className="flex gap-8 justify-center items-center">
+      <div className="flex gap-8 justify-center items-center relative">
         <img
           src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
           className="rounded-lg w-72.5 h-107"
           alt="poster"
         />
 
-        <img
-          src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-          className="rounded-lg w-190 h-107"
-          alt="backdrop"
-        />
+        <div className="relative">
+          <img
+            src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+            className="rounded-lg w-190 h-107 "
+            alt="backdrop"
+          />
+          <div className="absolute top-90 left-8 flex gap-3 items-center text-base font-bold">
+            <WatchTrailerButtonDetail movieId={movieId} key={movieId} />
+            <p className="text-white">Play trailer</p>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-2 flex-wrap mt-3">

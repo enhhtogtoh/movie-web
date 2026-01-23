@@ -22,7 +22,7 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
   if (!word) return null;
   const router = useRouter();
   return (
-    <div className="absolute left-1/2 top-11 z-40 mt-2 w-144.25 h-auto -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7]">
+    <div className="absolute left-1/2 top-11 z-40 mt-2 w-144.25 h-auto -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7] ">
       <div className="h-auto overflow-y-auto">
         {results.slice(0, 5).map((movie) => (
           <li

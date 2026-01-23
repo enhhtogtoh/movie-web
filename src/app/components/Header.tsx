@@ -55,7 +55,7 @@ export const Header = ({ genres }: Props) => {
         </motion.div>
         <div id="search-frame" className="w-122 h-9 flex gap-3  ">
           <GenresDropdown genres={genres} />
-          <div className="flex w-[379] h- border px-3 gap-[10] items-center rounded-md border-[#e4e4e7] ">
+          <div className="flex w-[379] h- border px-3 gap-[10] items-center rounded-md border-[#e4e4e7] max-sm:hidden ">
             <SearchIcon style={{ width: "16px", height: "16px" }} />
             <input
               type="search"

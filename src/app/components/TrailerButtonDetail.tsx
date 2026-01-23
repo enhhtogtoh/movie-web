@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { TrailerModal } from "./TrailModal";
+import { TrailerModalDetail } from "./TrailModalDetail";
 import { BsCaretRight } from "react-icons/bs";
 
 type Props = {
-  movieId: number;
+  movieId: string;
 };
 
-export const WatchTrailerButton = ({ movieId }: Props) => {
+export const WatchTrailerButtonDetail = ({ movieId }: Props) => {
   const [youtubeKey, setYoutubeKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +26,7 @@ export const WatchTrailerButton = ({ movieId }: Props) => {
     );
 
     const data = await res.json();
-    console.log(data);
+
     const trailer =
       data.results?.find(
         (v: any) => v.site === "YouTube" && v.type === "Trailer",
@@ -41,18 +41,16 @@ export const WatchTrailerButton = ({ movieId }: Props) => {
       <button
         onClick={handleClick}
         disabled={loading}
-        className="py-2 px-4 w-40 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-md cursor-pointer"
+        className="py-1 px-2 w-10 h-10 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-full cursor-pointer "
       >
         <BsCaretRight />
-        {loading ? "Loading..." : "Watch Trailer"}
       </button>
 
       {youtubeKey && (
-        <TrailerModal
+        <TrailerModalDetail
           youtubeKey={youtubeKey}
           onClose={() => setYoutubeKey(null)}
-          movieId={movieId}
-       
+    movieId={movieId}
         />
       )}
     </div>
