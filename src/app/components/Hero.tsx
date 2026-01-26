@@ -1,14 +1,8 @@
 // "use client";
 import { nowPalying } from "../page";
-import { Moviecard1 } from "./MovieCard";
-import Autoplay from "embla-carousel-autoplay";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
+import { CarouselComponent } from "./CarouselComponent";
+// import { useState } from "react";
 
 const fetchfromNowPlayingMovieDB = async () => {
   const response = await fetch(
@@ -25,29 +19,11 @@ const fetchfromNowPlayingMovieDB = async () => {
 
   return data.results;
 };
-
-export const Hero = async () => {
+type Params = {
+  movie: number;
+};
+// const [handleClick, setHandleClick] = useState(true);
+export const Hero = async ({ movie }: Params) => {
   const nowPlayingMovie: nowPalying[] = await fetchfromNowPlayingMovieDB();
-  return (
-    <Carousel
-      className="w-full"
-      // opts={{ loop: true }}
-      // plugins={[
-      //   Autoplay({
-      //     delay: 5000,
-      //   }),
-      // ]}
-    >
-      <CarouselContent>
-        {nowPlayingMovie.map((mov) => (
-          <CarouselItem key={mov.id} className="relative">
-            <Moviecard1 mov={mov} key={mov.id} />
-            
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="left-5" />
-      <CarouselNext className="right-5" />
-    </Carousel>
-  );
+  return <CarouselComponent nowPlayingMovie={nowPlayingMovie} />;
 };

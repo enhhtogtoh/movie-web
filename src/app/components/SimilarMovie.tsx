@@ -11,7 +11,7 @@ export const fetchfromSimilarMovieDB = async (id: string): Promise<Movie[]> => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
   console.log(data);
@@ -20,7 +20,7 @@ export const fetchfromSimilarMovieDB = async (id: string): Promise<Movie[]> => {
 export const SimilarMovie = async ({ id }: { id: string }) => {
   const movies: Movie[] = await fetchfromSimilarMovieDB(id);
   return (
-    <div className="flex flex-col gap-8 px-20">
+    <div className="flex flex-col gap-8  max-sm:px-0 ">
       <div className="flex justify-between">
         <h2 className="font-semibold text-3xl">More like this</h2>
         <Link
@@ -37,8 +37,13 @@ export const SimilarMovie = async ({ id }: { id: string }) => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-5  w-auto mb-8 gap-8 ">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 max-sm:hidden">
         {movies.slice(0, 5).map((movie) => (
+          <MovieCard movie={movie} key={movie.id} />
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-6 lg:hidden">
+        {movies.slice(0, 2).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>

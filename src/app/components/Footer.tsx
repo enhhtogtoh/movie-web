@@ -5,9 +5,12 @@ export const Footer = () => {
   return (
     <div
       id="footer-content"
-      className="w-full h-70 py-10 flex gap-12 bg-indigo-700 items-center justify-center mt-10"
+      className="w-full h-70 py-10 flex gap-12 bg-indigo-700 items-center justify-center mt-10 max-sm:w-auto"
     >
-      <div id="footer-container" className="w-full h-50 max-w-7xl flex gap-30 ">
+      <div
+        id="footer-container"
+        className="w-full h-50 max-w-7xl flex gap-30 max-sm:flex-col max-sm:gap-7 max-sm:px-5 max-sm:justify-center"
+      >
         <div id="info-section" className="w-61.75 h-50 flex gap-10">
           <div id="logo-and-right" className="w-full h-13 flex flex-col gap-3">
             <div id="logo" className="flex items-center ">
@@ -25,7 +28,7 @@ export const Footer = () => {
         </div>
         <div
           id="contact-and-social"
-          className="w-228.25 h-50 flex gap-24 justify-end"
+          className="w-228.25 h-50 flex gap-24 justify-end max-sm:justify-start max-sm:gap-12"
         >
           <div
             id="contact-section"
@@ -54,7 +57,7 @@ export const Footer = () => {
             className="text-white flex flex-col gap-3 text-sm"
           >
             <p>Follow us</p>
-            <div className="flex gap-3 font-medium">
+            <div className="flex gap-3 font-medium max-sm:flex-col">
               <p>Facebook</p>
               <p>Instagram</p>
               <p>Twitter</p>

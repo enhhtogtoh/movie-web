@@ -6,7 +6,7 @@ type Props = {
   youtubeKey: string;
   onClose: () => void;
   movieId: number;
-  // onOpen: (id: number) => void;
+
 };
 
 export const TrailerModal = ({ youtubeKey, onClose, movieId }: Props) => {

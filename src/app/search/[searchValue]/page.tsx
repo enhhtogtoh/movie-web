@@ -28,9 +28,9 @@ export default async function ResultPage({
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-6">Search results</h1>
+      <h1 className="text-3xl font-bold mb-6 max-sm:mb-8">Search results</h1>
 
-      <div className="grid grid-cols-[1fr_auto_300px] gap-8">
+      <div className="grid grid-cols-[1fr_auto_300px] gap-8 max-sm:grid-cols-none max-sm:flex max-sm:flex-col">
         <div>
           {movies.length === 0 ? (
             <div className="border rounded-lg py-20 text-center text-gray-500">
@@ -42,7 +42,7 @@ export default async function ResultPage({
                 {data.total_results} results for "{searchValue}"
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-6">
                 {movies.map((movie: any) => (
                   <MovieCard key={movie.id} movie={movie} />
                 ))}

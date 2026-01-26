@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TrailerModal } from "./TrailModal";
 import { BsCaretRight } from "react-icons/bs";
 
@@ -32,27 +32,21 @@ export const WatchTrailerButton = ({ movieId }: Props) => {
         (v: any) => v.site === "YouTube" && v.type === "Trailer",
       ) || data.results?.find((v: any) => v.site === "YouTube");
 
-    setYoutubeKey(trailer.key);
+    setYoutubeKey(trailer?.key);
     setLoading(false);
   };
 
+  useEffect(() => {
+    handleClick();
+  }, [movieId]);
+
   return (
     <div>
-      <button
-        onClick={handleClick}
-        disabled={loading}
-        className="py-2 px-4 w-40 flex gap-2 bg-white text-black text-sm justify-center items-center rounded-md cursor-pointer"
-      >
-        <BsCaretRight />
-        {loading ? "Loading..." : "Watch Trailer"}
-      </button>
-
       {youtubeKey && (
         <TrailerModal
           youtubeKey={youtubeKey}
           onClose={() => setYoutubeKey(null)}
           movieId={movieId}
-       
         />
       )}
     </div>

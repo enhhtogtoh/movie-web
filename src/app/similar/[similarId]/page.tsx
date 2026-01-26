@@ -15,26 +15,24 @@ export default async function SimilarPage({
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
       cache: "no-store",
-    }
+    },
   );
 
   const data = await res.json();
 
   const movies = data?.results || [];
   return (
-    <div className="px-20 py-8 ">
-      <h1 className="text-3xl font-bold mb-8 ">More like this</h1>
-      {movies.length === 0 ? (
-        <div className="border rounded-lg py-20 text-center text-gray-500">
-          No results found.
+    <div className="flex  flex-col items-center">
+      <div className="flex flex-col justify-center items-center max-w-360 w-full gap-8">
+        <div className="flex w-full pt-13">
+          <p className="text-3xl font-semibold ">More like this </p>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {movies.map((movie: any) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard movie={movie} key={movie.id} />
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
