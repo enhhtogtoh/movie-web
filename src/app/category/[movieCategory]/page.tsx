@@ -1,7 +1,7 @@
 import { fetchfromPopularMovieDB } from "@/app/components/Popular";
 import { Movie } from "@/app/page";
 import { MovieCard } from "@/app/components/MovieCard";
-import { DynamicPagination } from "@/app/components/DynamicPagination";
+// import { DynamicPagination } from "@/app/components/DynamicPagination";
 // import { useSearchParams } from "next/navigation";
 export default async function Page({
   params,
