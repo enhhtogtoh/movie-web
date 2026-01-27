@@ -1,7 +1,8 @@
 import { fetchfromPopularMovieDB } from "@/app/components/Popular";
 import { Movie } from "@/app/page";
 import { MovieCard } from "@/app/components/MovieCard";
-// import { SimilarPage } from "@/app/movie/[movieId]/similar/page";
+import { DynamicPagination } from "@/app/components/DynamicPagination";
+// import { useSearchParams } from "next/navigation";
 export default async function Page({
   params,
 }: {
@@ -9,6 +10,8 @@ export default async function Page({
 }) {
   const { movieCategory } = await params;
   const movies: Movie[] = await fetchfromPopularMovieDB(movieCategory);
+  // const searchParams = useSearchParams();
+  // const currentPage = Number(searchParams.get("page") ?? 1);
 
   return (
     <div className="flex  flex-col items-center">
@@ -22,6 +25,7 @@ export default async function Page({
           ))}
         </div>
       </div>
+      {/* <DynamicPagination totalPages={currentPage} /> */}
     </div>
   );
 }

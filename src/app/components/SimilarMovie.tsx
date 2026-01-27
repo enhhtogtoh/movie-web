@@ -27,13 +27,16 @@ export const SimilarMovie = async ({ id }: { id: string }) => {
           href={`/similar/${id}`}
           style={{ display: "flex", alignItems: "center", gap: "8px" }}
         >
-          see more
-          <ArrowRightIcon
-            style={{
-              width: "16px",
-              height: "16px",
-            }}
-          />{" "}
+          <motion.button
+            initial={{ opacity: 0 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8, color: "#432dd7" }}
+            whileInView={{ opacity: 1 }}
+            className="flex text-sm  justify-center items-center gap-2 cursor-pointer"
+          >
+            See more
+            <ArrowRightIcon style={{ width: "16px", height: "16px" }} />
+          </motion.button>
         </Link>
       </div>
 
