@@ -12,11 +12,12 @@ export const fetchfromPopularMovieDB = async (category: string) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
   return data.results;
 };
+
 export const Popular = async () => {
   const movies: Movie[] = await fetchfromPopularMovieDB("popular");
   return (

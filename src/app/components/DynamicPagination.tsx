@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/pagination";
 type DynamicPaginationProps = { totalPages: number };
 
-export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
+export const DynamicPagination = ({ totalPages }: { totalPages: number }) => {
   const {
     currentPage,
     handleNext,
     handlePageChange,
     handlePrevious,
-     displayPages
+    displayPages,
   } = usePagination(totalPages);
 
   return (
@@ -28,21 +28,29 @@ export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
             <PaginationPrevious onClick={handlePrevious} />
           </PaginationItem>
         )}
-        {displayPages.map((pageNumber)=> (
-    <PaginationItem key={pageNumber}>
-          <PaginationLink onClick={handlePageChange(pageNumber)} className={cn("cursor-pointer",pageNumber===currentPage && "bg-gray-200")}>{pageNumber}</PaginationLink>
-        </PaginationItem>
+        {displayPages.map((pageNumber) => (
+          <PaginationItem key={pageNumber}>
+            <PaginationLink
+              onClick={handlePageChange(pageNumber)}
+              className={cn(
+                "cursor-pointer",
+                pageNumber === currentPage && "bg-gray-200",
+              )}
+            >
+              {pageNumber}
+            </PaginationLink>
+          </PaginationItem>
         ))}
-    
 
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
 
         {currentPage < totalPages && (
-        <PaginationItem>
-          <PaginationNext onClick={handleNext}  />
-        </PaginationItem>)}
+          <PaginationItem>
+            <PaginationNext onClick={handleNext} />
+          </PaginationItem>
+        )}
       </PaginationContent>
     </Pagination>
   );

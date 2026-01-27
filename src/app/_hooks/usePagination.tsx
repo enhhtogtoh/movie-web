@@ -1,7 +1,7 @@
 "use client";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-export const usePagination = (totalPages: number = 10) => {
+export const usePagination = (totalPage: number = 10) => {
   const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -16,7 +16,7 @@ export const usePagination = (totalPages: number = 10) => {
     }
   };
   const handleNext = () => {
-    if (currentPage < totalPages) {
+    if (currentPage < totalPage) {
       handlePageChange(currentPage + 1)();
     }
   };
@@ -30,8 +30,8 @@ export const usePagination = (totalPages: number = 10) => {
     let start = Math.max(currentPage - Math.floor(maxVisibleButtons / 2), 1);
     let end = start + maxVisibleButtons - 1;
 
-    if (end > totalPages) {
-      end = totalPages;
+    if (end > totalPage) {
+      end = totalPage;
       start = Math.max(1, end - maxVisibleButtons + 1);
     }
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
@@ -42,7 +42,7 @@ export const usePagination = (totalPages: number = 10) => {
     handleNext,
     handlePrevious,
     handlePageChange,
-    totalPages,
+    totalPage,
     displayPages: getDisplayPages(),
   };
 };
