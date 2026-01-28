@@ -1,15 +1,21 @@
 import { MovieCard } from "@/app/components/MovieCard";
+import { DynamicPagination } from "@/app/components/DynamicPagination";
 
 export default async function SimilarPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ similarId: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const resolvedParams = await params;
   const id = resolvedParams.similarId;
+  const sParams = await searchParams;
+
+  const currentPage = Number(sParams.page) || 1;
 
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=${currentPage}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
@@ -19,7 +25,7 @@ export default async function SimilarPage({
   );
 
   const data = await res.json();
-
+  const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
   const movies = data?.results || [];
   return (
     <div className="flex  flex-col items-center">
@@ -31,6 +37,9 @@ export default async function SimilarPage({
           {movies.map((movie: any) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
+        </div>
+        <div>
+          <DynamicPagination totalPages={totalPages} />
         </div>
       </div>
     </div>
