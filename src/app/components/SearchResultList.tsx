@@ -33,7 +33,7 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
             }}
             className="flex justify-between gap-3 px-4 py-3 hover:bg-gray-50 border-b border-[#E4E4E7] cursor-pointer"
           >
-            <div className="flex items-center gap-3 ">
+            <div className="flex items-center gap-2 ">
               {movie.poster_path && (
                 <div className="h-16 w-11 overflow-hidden rounded-md bg-gray-200">
                   <Image
@@ -47,7 +47,9 @@ export const SearchResultList = ({ word, results, onClose }: Props) => {
               )}
 
               <div className="flex flex-col ">
-                <p className="text-lg font-medium text-black">{movie.title}</p>
+                <p className="text-lg font-medium text-black max-w-100">
+                  {movie.title}
+                </p>
 
                 {movie.vote_average !== undefined && (
                   <p className="text-sm text-black">
