@@ -3,16 +3,19 @@ import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 import { ArrowRightIcon } from "lucide-react";
-export const fetchfromTopRatedMovieDB = async (category: string) => {
+export const fetchfromTopRatedMovieDB = async (
+  category: string,
+  page: number = 1,
+) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
   return data.results;

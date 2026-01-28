@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { usePagination } from "../_hooks/usePagination";
 import {
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/pagination";
 type DynamicPaginationProps = { totalPages: number };
 
-export const DynamicPagination = ({ totalPages }: { totalPages: number }) => {
+export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
   const {
     currentPage,
     handleNext,

@@ -6,9 +6,9 @@ import * as motion from "motion/react-client";
 import { ArrowRightIcon } from "lucide-react";
 import { DynamicPagination } from "./DynamicPagination";
 
-export const fetchfromUpcomingMovieDB = async (category: string) => {
+export const fetchfromUpcomingMovieDB = async (category: string, page:number=1) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {

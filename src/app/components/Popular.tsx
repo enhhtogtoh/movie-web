@@ -3,9 +3,9 @@ import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import * as motion from "motion/react-client";
 import { ArrowRightIcon } from "lucide-react";
-export const fetchfromPopularMovieDB = async (category: string) => {
+export const fetchfromPopularMovieDB = async (category: string, page = 1) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}`,
+    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {
@@ -15,6 +15,7 @@ export const fetchfromPopularMovieDB = async (category: string) => {
     },
   );
   const data = await response.json();
+  console.log(data);
   return data.results;
 };
 
