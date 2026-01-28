@@ -19,6 +19,7 @@ export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
     handlePageChange,
     handlePrevious,
     displayPages,
+    totalPage,
   } = usePagination(totalPages);
 
   return (
@@ -34,8 +35,8 @@ export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
             <PaginationLink
               onClick={handlePageChange(pageNumber)}
               className={cn(
-                "cursor-pointer",
-                pageNumber === currentPage && "bg-gray-200",
+                "cursor-pointer hover:bg-gray-100",
+                pageNumber === currentPage && "bg-gray-200 text-black",
               )}
             >
               {pageNumber}
@@ -43,11 +44,16 @@ export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
           </PaginationItem>
         ))}
 
-        <PaginationItem>
+        {/* <PaginationItem>
           <PaginationEllipsis />
-        </PaginationItem>
+        </PaginationItem> */}
+        {currentPage < 9 && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
 
-        {currentPage < totalPages && (
+        {currentPage < totalPage && (
           <PaginationItem>
             <PaginationNext onClick={handleNext} />
           </PaginationItem>

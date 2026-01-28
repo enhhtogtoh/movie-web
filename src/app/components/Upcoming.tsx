@@ -24,7 +24,7 @@ export const fetchfromUpcomingMovieDB = async (category: string, page:number=1) 
 export const Upcoming = async () => {
   const upcomingMovie: Movie[] = await fetchfromUpcomingMovieDB("upcoming");
   return (
-    <div className="w-full flex flex-col gap-8 mt-8">
+    <div className="w-full flex flex-col gap-8 mt-8 max-sm:px-5">
       <div className="text-2xl font-semibold  flex gap-8 justify-between">
         <h1>Upcoming</h1>
         <Link href="/category/upcoming">

@@ -7,8 +7,8 @@ type Props = {
 
 export const TrailerModalDetail = ({ youtubeKey, onClose, movieId }: Props) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="relative w-full max-w-4xl aspect-video bg-black rounded-lg">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 max-sm:place-content-start">
+      <div className="relative w-full max-w-4xl aspect-video bg-black rounded-lg max-sm:w-auto ">
         <button
           onClick={onClose}
           className="absolute -top-10 right-0 text-white text-lg cursor-pointer"

@@ -1,4 +1,3 @@
-
 import { TbStarFilled } from "react-icons/tb";
 import Team from "@/app/components/Directors";
 import Link from "next/link";
@@ -68,7 +67,6 @@ export default async function MovieDetails({ params }: Params) {
                   notation: "compact",
                   maximumFractionDigits: 1,
                 }).format(data.vote_count)}{" "}
-                
               </p>
             </div>
           </div>
@@ -122,7 +120,7 @@ export default async function MovieDetails({ params }: Params) {
           <div className="flex gap-2 flex-wrap">
             {data.genres?.map((g) => (
               <Link key={g.id} href={`/genres/${g.id}`}>
-                <span className="px-3 py-1 rounded-full border border-gray-300 text-xs sm:text-sm text-black cursor-pointer hover:bg-gray-100 transition duration-200">
+                <span className="px-3 py-1 rounded-full border border-gray-300 text-xs sm:text-sm text-black cursor-pointer hover:bg-black hover:text-white hover:border-none transition duration-200">
                   {g.name}
                 </span>
               </Link>

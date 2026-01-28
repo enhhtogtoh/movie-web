@@ -20,7 +20,6 @@ export const GenresDropdown = ({ genres }: { genres: any[] }) => {
 
   const [selectedIds, setSelectedIds] = useState<string[]>(currentIds);
 
-  // 🔁 URL өөрчлөгдвөл state sync
   useEffect(() => {
     setSelectedIds(currentIds);
   }, [pathname]);
@@ -80,8 +79,8 @@ export const GenresDropdown = ({ genres }: { genres: any[] }) => {
                     className={`flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs transition cursor-pointer
                       ${
                         isSelected
-                          ? "bg-indigo-600 text-white border-indigo-600"
-                          : "bg-white border-gray-300 hover:border-indigo-400"
+                          ? "bg-black text-white border-black"
+                          : "bg-white border-gray-300 hover:border-gray-400"
                       }`}
                   >
                     {g.name}

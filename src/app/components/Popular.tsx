@@ -22,7 +22,7 @@ export const fetchfromPopularMovieDB = async (category: string, page = 1) => {
 export const Popular = async () => {
   const movies: Movie[] = await fetchfromPopularMovieDB("popular");
   return (
-    <div className="w-full flex flex-col gap-8 mt-8">
+    <div className="w-full flex flex-col gap-8 mt-8 max-sm:px-5">
       <div className="text-2xl font-semibold  flex gap-8 justify-between">
         <h1>Popular</h1>
         <Link href="/category/popular">

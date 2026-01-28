@@ -1,31 +1,37 @@
 import { MovieCard } from "@/app/components/MovieCard";
 import { getGenres } from "@/lib/getGenres";
 import { ChevronRightIcon } from "lucide-react";
+import { DynamicPagination } from "@/app/components/DynamicPagination";
 
 import Link from "next/link";
 
 export default async function ResultPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ searchValue: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const resolvedParams = await params;
   const searchValue = resolvedParams.searchValue;
-  const page = 1;
+  const sParams = await searchParams;
+
+  const currentPage = Number(sParams.page) || 1;
+
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${page}`,
+    `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${currentPage}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
       },
       cache: "no-store",
-    }
+    },
   );
   const genres = await getGenres();
   const data = await res.json();
   //   console.log(data);
   const movies = data?.results || [];
-
+  const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
       <h1 className="text-3xl font-bold mb-6 max-sm:mb-8">Search results</h1>
@@ -63,13 +69,16 @@ export default async function ResultPage({
               <Link
                 key={g.id}
                 href={`/genres/${g.id}`}
-                className="px-3 py-1 border rounded-full  flex items-center border-[#E4E4E7] text-xs hover:bg-[#432dd7] hover:text-white hover:border-[#432dd7]"
+                className="px-3 py-1 border rounded-full  flex items-center border-[#E4E4E7] text-xs hover:bg-black hover:text-white hover:border-black"
               >
                 {g.name}
                 <ChevronRightIcon style={{ width: "12px", height: "12px" }} />
               </Link>
             ))}
           </div>
+        </div>
+        <div>
+          <DynamicPagination totalPages={totalPages} />
         </div>
       </div>
     </div>

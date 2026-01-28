@@ -23,7 +23,7 @@ export const fetchfromTopRatedMovieDB = async (
 export const TopRated = async () => {
   const TopRated: Movie[] = await fetchfromTopRatedMovieDB("top_rated");
   return (
-    <div className="w-full flex flex-col gap-8 mt-8">
+    <div className="w-full flex flex-col gap-8 mt-8 max-sm:px-5">
       <div className="text-2xl font-semibold  flex gap-8 justify-between">
         <h1>Top Rated</h1>
         <Link href="/category/top_rated">

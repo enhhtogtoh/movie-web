@@ -3,15 +3,20 @@ import { IoClose } from "react-icons/io5";
 import { ChevronRightIcon } from "lucide-react";
 import { MovieCard } from "@/app/components/MovieCard";
 import { getGenres } from "@/lib/getGenres";
+import { DynamicPagination } from "@/app/components/DynamicPagination";
 
 export default async function GenresPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ genreIds: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { genreIds } = await params;
+  const sParams = await searchParams;
 
-  // URL DECODE
+  const currentPage = Number(sParams.page) || 1;
+
   const decodedIds = genreIds === "all" ? "" : decodeURIComponent(genreIds);
 
   const selectedIds =
@@ -22,9 +27,8 @@ export default async function GenresPage({
           .map((id) => id.trim())
           .filter(Boolean);
 
-  //  MOVIE FETCH
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${decodedIds}&page=1`,
+    `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${decodedIds}&page=${currentPage}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN_KEY}`,
@@ -35,6 +39,8 @@ export default async function GenresPage({
 
   const data = await res.json();
   const movies = data?.results || [];
+  const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+
   const genres = await getGenres();
   const selectedGenreNames = genres
     .filter((g: any) => selectedIds.includes(String(g.id)))
@@ -75,8 +81,8 @@ export default async function GenresPage({
                   className={`px-3 py-1 rounded-full border text-xs flex items-center gap-1 transition-all duration-200
                     ${
                       isSelected
-                        ? "bg-indigo-600 text-white border-indigo-600"
-                        : "bg-white border-gray-300 text-black hover:border-indigo-600"
+                        ? "bg-black text-white border-black"
+                        : "bg-white border-gray-300 text-black hover:border-gray-400"
                     }`}
                 >
                   {g.name}
@@ -93,9 +99,13 @@ export default async function GenresPage({
 
         {/* RIGHT – MOVIES */}
         <div className="col-span-12 md:col-span-9">
+          {/* <div className="border-t"></div> */}
           <p className="text-black font-semibold mb-6 text-xl">
             {data.total_results?.toLocaleString()} titles in
-            <span className="font-bold"> "{selectedGenreNames.join(", ")}"</span>
+            <span className="font-bold">
+              {" "}
+              "{selectedGenreNames.join(", ")}"
+            </span>
           </p>
 
           {movies.length === 0 ? (
@@ -110,6 +120,9 @@ export default async function GenresPage({
             </div>
           )}
         </div>
+      </div>
+      <div className="px-0 py-10">
+        <DynamicPagination totalPages={totalPages} />
       </div>
     </div>
   );
