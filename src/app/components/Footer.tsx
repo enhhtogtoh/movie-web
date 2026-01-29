@@ -57,7 +57,7 @@ export const Footer = () => {
             className="text-white flex flex-col gap-3 text-sm w-auto "
           >
             <p>Follow us</p>
-            <div className="flex gap-3 font-medium max-sm:flex-col sm:flex-col">
+            <div className="flex gap-3 font-medium max-sm:flex-col ">
               <p>Facebook</p>
               <p>Instagram</p>
               <p>Twitter</p>

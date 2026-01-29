@@ -17,7 +17,7 @@ export const MovieCard = ({ movie }: Props) => {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div
-        className="cursor-pointer bg-[#F4F4F5] h-98 rounded-md flex flex-col transition-transform duration-200 max-sm:h-100 sm:h-auto
+        className="cursor-pointer bg-[#F4F4F5] h-98 rounded-md flex flex-col transition-transform duration-200 max-sm:h-100 
              hover:scale-105 hover:drop-shadow-md"
       >
         <div className="h-75 w-full ">
