@@ -40,7 +40,6 @@ export default async function MovieDetails({ params }: Params) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 max-sm:px-0 py-6 space-y-6 flex flex-col justify-center ">
-      {/* 1. Header: Title and Rating */}
       <div className="flex flex-col sm:flex-row justify-between w-full gap-4 max-sm:px-5 max-sm:flex-row">
         <div className="flex flex-col">
           <h1 className="text-2xl sm:text-3xl font-semibold">{data.title}</h1>
@@ -73,9 +72,7 @@ export default async function MovieDetails({ params }: Params) {
         </div>
       </div>
 
-      {/* 2. Media Section (Backdrop and Poster) */}
       <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 items-start lg:items-center">
-        {/* Backdrop Image for Mobile / Secondary for Desktop */}
         <div className="relative w-full lg:order-2">
           <img
             src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
@@ -83,7 +80,6 @@ export default async function MovieDetails({ params }: Params) {
             alt="backdrop"
           />
 
-          {/* Play Trailer – LEFT BOTTOM */}
           <div className="absolute left-4 bottom-4 flex items-center gap-3">
             <WatchTrailerButtonDetail movieId={movieId} />
 
@@ -93,9 +89,6 @@ export default async function MovieDetails({ params }: Params) {
           </div>
         </div>
 
-        {/* Poster */}
-
-        {/* Poster Image (Hidden on very small screens or placed below) */}
         <div className="hidden sm:block shrink-0 lg:order-1 ">
           <img
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -105,9 +98,7 @@ export default async function MovieDetails({ params }: Params) {
         </div>
       </div>
 
-      {/* 3. Genres & Content */}
       <div className="flex flex-col max-sm:flex-row md:flex-row gap-6 max-sm:px-5 ">
-        {/* Poster for Mobile version (from screenshot style) */}
         <div className="sm:hidden w-32 shrink-0">
           <img
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -133,7 +124,6 @@ export default async function MovieDetails({ params }: Params) {
         </div>
       </div>
 
-      {/* 4. Additional Info Sections */}
       <div className="pt-4 space-y-8 max-sm:px-5">
         <Team id={movieId} />
         <div className=" pt-6 ">

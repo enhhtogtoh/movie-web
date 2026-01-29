@@ -2,10 +2,7 @@ import { Upcoming } from "@/app/components/Upcoming";
 import { Popular } from "./components/Popular";
 import { TopRated } from "./components/TopRated";
 import { Hero } from "@/app/components/Hero";
-
 import { getNowPlaying } from "@/lib/getNowPlaying";
-import { data } from "motion/react-client";
-// import { DynamicPagination } from "./components/DynamicPagination";
 
 export type Movie = {
   id: number;
@@ -33,7 +30,6 @@ export default async function Home() {
         <Upcoming />
         <Popular />
         <TopRated />
-        {/* <DynamicPagination totalPage={movies} /> */}
       </div>
     </div>
   );

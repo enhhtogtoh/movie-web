@@ -11,7 +11,7 @@ export const Footer = () => {
         id="footer-container"
         className="w-full h-50 max-w-7xl flex gap-30 max-sm:flex-col max-sm:gap-7 max-sm:px-5 max-sm:justify-center"
       >
-        <div id="info-section" className="w-61.75 h-50 flex gap-10">
+        <div id="info-section" className="w-61.75 h-50 flex gap-10 max-sm:w-auto">
           <div id="logo-and-right" className="w-full h-13 flex flex-col gap-3">
             <div id="logo" className="flex items-center ">
               <TbMovie
@@ -28,7 +28,7 @@ export const Footer = () => {
         </div>
         <div
           id="contact-and-social"
-          className="w-228.25 h-50 flex gap-24 justify-end max-sm:justify-start max-sm:gap-12"
+          className="w-auto h-50 flex gap-24 justify-end max-sm:justify-start max-sm:gap-12"
         >
           <div
             id="contact-section"
@@ -40,24 +40,24 @@ export const Footer = () => {
                 <CiMail style={{ width: "16px", height: "16px" }} />
                 <div id="email-text">
                   <p>Email:</p>
-                  <p>enhhtogtoh@gmail.com</p>
+                  <p>support@gmail.com</p>
                 </div>
               </div>
               <div id="phone-container" className="flex items-center gap-3 ">
                 <PiPhoneThin style={{ width: "16px", height: "16px" }} />
                 <div id="phone-text">
                   <p>Phone:</p>
-                  <p>+976 8007-6360</p>
+                  <p>+976 9911-9911</p>
                 </div>
               </div>
             </div>
           </div>
           <div
             id="social-media-section"
-            className="text-white flex flex-col gap-3 text-sm"
+            className="text-white flex flex-col gap-3 text-sm w-auto "
           >
             <p>Follow us</p>
-            <div className="flex gap-3 font-medium max-sm:flex-col">
+            <div className="flex gap-3 font-medium max-sm:flex-col sm:flex-col">
               <p>Facebook</p>
               <p>Instagram</p>
               <p>Twitter</p>

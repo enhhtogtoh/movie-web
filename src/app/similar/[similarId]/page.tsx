@@ -28,7 +28,7 @@ export default async function SimilarPage({
   const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
   const movies = data?.results || [];
   return (
-    <div className="flex  flex-col items-center max-sm:px-5">
+    <div className="flex  flex-col items-center max-sm:px-5 sm:px-5">
       <div className="flex flex-col justify-center items-center max-w-360 w-full gap-8">
         <div className="flex w-full pt-13">
           <p className="text-3xl font-semibold ">More like this </p>

@@ -45,20 +45,20 @@ export const GenresDropdown = ({ genres }: { genres: any[] }) => {
       {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
+        className="flex items-center gap-2 rounded-md border border-[#e4e4e7] bg-white px-4 py-2 max-sm:py-3 text-sm hover:bg-gray-50 cursor-pointer"
       >
         <ChevronDownIcon size={16} />
-        <span>Genre</span>
+        <span className="max-sm:hidden max-md:hidden">Genre</span>
       </button>
 
-      {/* DROPDOWN */}
+    
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute left-0 top-full z-50 mt-2 w-145 rounded-xl border border-[#e4e4e7] bg-white p-6 shadow-2xl"
+            className="absolute left-0 top-full z-50 mt-2 w-145 max-sm:w-80 rounded-xl border border-[#e4e4e7] bg-white p-6 shadow-2xl"
           >
             <h2 className="text-xl font-bold mb-1">Genres</h2>
             <p className="text-sm text-gray-500 mb-4">
