@@ -46,7 +46,7 @@ export const SimilarMovie = async ({ id }: { id: string }) => {
         ))}
       </div>
       <div className="grid grid-cols-2 gap-6 lg:hidden">
-        {movies.slice(0, 2).map((movie) => (
+        {movies.slice(0, 6).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
